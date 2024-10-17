@@ -1,0 +1,66 @@
+---
+title: "Login"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        input[type="password"] {
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            outline: none;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Login</h1>
+    <form id="loginForm">
+        <input type="password" id="password" placeholder="Enter password" required>
+        <button type="submit">Login</button>
+    </form>
+    <p id="errorMessage" style="color: red; display: none;">Incorrect password. Please try again.</p>
+
+    <script>
+        const correctPassword = 'balan@9500'; // Set your correct password here
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+
+            if (password === correctPassword) {
+                localStorage.setItem('isLoggedIn', 'true'); // Set login status in local storage
+                window.location.href = '/'; // Redirect to the main page
+            } else {
+                document.getElementById('errorMessage').style.display = 'block'; // Show error message
+            }
+        });
+    </script>
+</body>
+</html>
